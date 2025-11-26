@@ -1,4 +1,5 @@
-require("dotenv").config();
+require("dotenv").config({ silent: true });
+
 
 const config = {
   baseUrl: process.env.BASE_URL,

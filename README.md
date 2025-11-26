@@ -48,10 +48,10 @@ API server auto-boot in CI
 📊 Reports
 
 Allure reporting (optional)
-
 Clean pass/fail summaries
 
 🧱 Architecture
+
 api-test-ecommerce/
   ├── backend/
   │   ├── routes/

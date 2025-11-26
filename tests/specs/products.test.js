@@ -1,4 +1,5 @@
 const { api } = require("../helpers/apiClient");
+const { step, attachment } = require("jest-allure2-reporter");
 
 describe("Products API", () => {
   test("should return list of products", async () => {

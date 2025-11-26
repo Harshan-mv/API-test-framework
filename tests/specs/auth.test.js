@@ -1,5 +1,6 @@
 const { api } = require("../helpers/apiClient");
 const { loadJson } = require("../../src/utils/testDataLoader");
+const { step, attachment } = require("jest-allure2-reporter");
 
 describe("Auth API", () => {
   const users = loadJson("users.json");

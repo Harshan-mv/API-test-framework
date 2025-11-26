@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","21","should login successfully with valid credentials","","Wed Nov 26 20:31:11 IST 2025","passed","Wed Nov 26 20:31:12 IST 2025","","Auth API","",""
+"","9","should reject invalid login","","Wed Nov 26 20:31:12 IST 2025","passed","Wed Nov 26 20:31:12 IST 2025","","Auth API","",""
+"","227","should place order and persist in DB with PAID status when payment succeeds","","Wed Nov 26 20:31:10 IST 2025","passed","Wed Nov 26 20:31:11 IST 2025","","Order Flow","",""
+"","16","should return list of products","","Wed Nov 26 20:31:12 IST 2025","passed","Wed Nov 26 20:31:12 IST 2025","","Products API","",""
+"","174","should fail order creation when payment fails and not persist in DB","","Wed Nov 26 20:31:11 IST 2025","passed","Wed Nov 26 20:31:11 IST 2025","","Order Flow","",""

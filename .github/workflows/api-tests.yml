@@ -8,6 +8,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write     # Required for GitHub Pages deployment
+
     services:
       mongodb:
         image: mongo
@@ -31,15 +34,36 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      ## 🔥 FIXED: backend now uses SAME MONGO as Jest
+      # Start Express API server using test MongoDB
       - name: Start API server
         env:
           MONGO_URI: mongodb://127.0.0.1:27017/ecomm_test
-        run: npm run start:test &
+        run: |
+          npm run start:test &
+          sleep 5
 
-      ## Jest uses same DB
+      # Run API tests (Jest + Allure)
       - name: Run API tests
         env:
           BASE_URL: http://localhost:4000/api
           MONGO_URI: mongodb://127.0.0.1:27017/ecomm_test
         run: npm test
+
+      # Generate Allure report
+      - name: Generate Allure Report
+        run: npx allure generate allure-results --clean -o allure-report
+
+      # Upload report as artifact
+      - name: Upload Allure Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      # Deploy to GitHub Pages (FIXED VERSION)
+      - name: Deploy Allure to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          publish_branch: gh-pages
